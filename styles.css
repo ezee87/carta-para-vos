@@ -9,6 +9,7 @@
   --color-border: #DCD6CB;
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-reading: "EB Garamond", Georgia, serif;
+  --font-signature: "Marck Script", "Brush Script MT", cursive;
   --page-padding: clamp(32px, 6vw, 110px);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -348,9 +349,9 @@ figcaption {
 
 .domestic-gallery {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  gap: clamp(12px, 1.3vw, 20px);
+  gap: clamp(20px, 1.6vw, 24px);
 }
 
 .domestic-photo {
@@ -360,6 +361,10 @@ figcaption {
 .domestic-photo img {
   width: auto;
   height: min(34vw, 470px);
+}
+
+.domestic-photo--small img {
+  height: min(26.5vw, 367px);
 }
 
 .domestic-copy {
@@ -401,8 +406,8 @@ figcaption {
   padding: clamp(84px, 8vw, 116px) 0 0;
 }
 
-.paired-reading .prose:first-child { grid-column: 1 / 7; }
-.paired-reading .prose:last-child {
+.paired-reading > .prose:nth-last-child(2) { grid-column: 1 / 7; }
+.paired-reading > .prose:last-child {
   grid-column: 7 / 13;
   margin-top: clamp(48px, 5vw, 72px);
 }
@@ -423,6 +428,256 @@ figcaption {
 }
 
 .final-photo img { width: 100%; }
+
+/* Botanical illustrations: decorative, out of the document flow, and inert. */
+.intro-moment,
+.reading,
+.featured,
+.immensity-moment,
+.reflection-moment,
+.everyday-moment,
+.future-moment,
+.paired-reading,
+.final-photo {
+  position: relative;
+  isolation: isolate;
+}
+
+.intro-moment > :not(.botanical),
+.reading > :not(.botanical),
+.featured > :not(.botanical),
+.immensity-moment > :not(.botanical),
+.reflection-moment > :not(.botanical),
+.everyday-moment > :not(.botanical),
+.future-moment > :not(.botanical),
+.paired-reading > :not(.botanical),
+.final-photo > :not(.botanical) {
+  position: relative;
+  z-index: 2;
+}
+
+.botanical {
+  --botanical-opacity: .56;
+  position: absolute;
+  z-index: 1;
+  opacity: var(--botanical-opacity);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
+}
+
+.botanical__image {
+  width: 100%;
+  height: auto;
+  will-change: opacity, -webkit-mask-size, mask-size;
+}
+
+.botanical--one {
+  --botanical-opacity: .64;
+  top: 5%;
+  left: calc(var(--page-padding) * -0.72);
+  width: clamp(118px, 12vw, 168px);
+}
+
+.botanical--one .botanical__image { transform: rotate(-3deg); }
+
+.botanical--two {
+  --botanical-opacity: .62;
+  right: calc(var(--page-padding) * -0.8);
+  bottom: -8%;
+  width: clamp(185px, 21vw, 274px);
+}
+
+.botanical--two .botanical__image {
+  clip-path: inset(0 10% 0 0);
+  transform: rotate(2deg);
+}
+
+.botanical--three {
+  --botanical-opacity: .57;
+  top: 50%;
+  right: clamp(300px, 30vw, 390px);
+  width: clamp(120px, 11.5vw, 150px);
+  transform: translateY(-50%);
+}
+
+.botanical--three .botanical__image { transform: rotate(2deg); }
+
+.botanical--four {
+  --botanical-opacity: .58;
+  right: clamp(-10px, 1vw, 18px);
+  bottom: 4%;
+  width: clamp(108px, 12vw, 150px);
+}
+
+.botanical--four .botanical__image { transform: rotate(4deg); }
+
+.botanical--five {
+  --botanical-opacity: .5;
+  right: 1%;
+  bottom: -34px;
+  width: clamp(235px, 29vw, 365px);
+}
+
+.botanical--five .botanical__image { transform: rotate(-2deg); }
+
+.botanical--six {
+  --botanical-opacity: .58;
+  width: clamp(430px, 40vw, 520px);
+}
+
+.botanical--six-left {
+  top: 47%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.botanical--six-right {
+  top: 54%;
+  left: 61%;
+  transform: translate(-50%, -50%);
+}
+
+.botanical--six-left .botanical__image { clip-path: inset(0 49% 0 0); }
+.botanical--six-right .botanical__image { clip-path: inset(0 0 0 49%); }
+
+.botanical--seven {
+  --botanical-opacity: .48;
+  top: 27%;
+  left: calc(var(--page-padding) * -0.34);
+  width: clamp(48px, 5vw, 66px);
+}
+
+.botanical--seven .botanical__image { transform: rotate(-3deg); }
+
+.botanical--eight {
+  --botanical-opacity: .58;
+  right: calc(var(--page-padding) * -0.46);
+  bottom: -15%;
+  width: clamp(170px, 18vw, 225px);
+}
+
+.botanical--eight .botanical__image { transform: rotate(-4deg); }
+
+.botanical--nine {
+  --botanical-opacity: .56;
+  top: 48%;
+  right: clamp(300px, 29vw, 380px);
+  width: clamp(105px, 10.5vw, 140px);
+  transform: translateY(-15%);
+}
+
+.botanical--nine .botanical__image { transform: rotate(3deg); }
+
+.botanical--ten {
+  --botanical-opacity: .46;
+  bottom: -54px;
+  left: calc(var(--page-padding) * -0.24);
+  width: clamp(190px, 20vw, 245px);
+}
+
+.botanical--ten .botanical__image { transform: rotate(2deg); }
+
+.botanical--eleven {
+  --botanical-opacity: .54;
+  right: calc(var(--page-padding) * -0.5);
+  bottom: 3%;
+  width: clamp(150px, 16vw, 195px);
+}
+
+.botanical--eleven .botanical__image { transform: rotate(5deg); }
+
+.final-photo > img:not(.botanical__image) {
+  position: relative;
+  z-index: 2;
+}
+
+/* JavaScript adds botanical-ready only after the observer is available, so the
+   illustrations remain visible if scripts fail. */
+.js .botanical.botanical-ready:not(.botanical--four) .botanical__image {
+  opacity: 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  transition:
+    opacity 420ms ease-out,
+    -webkit-mask-size var(--botanical-duration, 2400ms) var(--ease-out),
+    mask-size var(--botanical-duration, 2400ms) var(--ease-out);
+}
+
+.js .botanical--one.botanical-ready .botanical__image,
+.js .botanical--three.botanical-ready .botanical__image,
+.js .botanical--seven.botanical-ready .botanical__image,
+.js .botanical--nine.botanical-ready .botanical__image {
+  -webkit-mask-image: linear-gradient(to top, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 82%, transparent 100%);
+  -webkit-mask-position: bottom;
+  mask-position: bottom;
+  -webkit-mask-size: 100% 0%;
+  mask-size: 100% 0%;
+}
+
+.js .botanical--two.botanical-ready .botanical__image,
+.js .botanical--five.botanical-ready .botanical__image,
+.js .botanical--eight.botanical-ready .botanical__image,
+.js .botanical--ten.botanical-ready .botanical__image,
+.js .botanical--eleven.botanical-ready .botanical__image {
+  -webkit-mask-image: linear-gradient(to right, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 82%, transparent 100%);
+  -webkit-mask-position: left;
+  mask-position: left;
+  -webkit-mask-size: 0% 100%;
+  mask-size: 0% 100%;
+}
+
+.js .botanical--six.botanical-ready .botanical__image {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 5% 100%;
+  mask-size: 5% 100%;
+}
+
+.js .botanical.botanical-ready.is-visible .botanical__image {
+  opacity: 1;
+  -webkit-mask-size: 112% 112%;
+  mask-size: 112% 112%;
+}
+
+.js .botanical--one.botanical-ready { --botanical-duration: 2700ms; }
+.js .botanical--two.botanical-ready { --botanical-duration: 2300ms; }
+.js .botanical--three.botanical-ready { --botanical-duration: 2600ms; }
+.js .botanical--five.botanical-ready { --botanical-duration: 2200ms; }
+.js .botanical--six.botanical-ready { --botanical-duration: 2900ms; }
+
+.js .botanical--four.botanical-ready .botanical__image {
+  opacity: 0;
+  transform: rotate(4deg) scale(.94);
+  transition: opacity 1700ms var(--ease-out), transform 1900ms var(--ease-out);
+}
+
+.js .botanical--four.botanical-ready.is-visible .botanical__image {
+  opacity: 1;
+  transform: rotate(4deg) scale(1);
+}
+
+.botanical--one.is-visible .botanical__image {
+  animation: botanical-breeze-one 12s ease-in-out 3s infinite alternate;
+}
+
+.botanical--five.is-visible .botanical__image {
+  animation: botanical-breeze-five 14s ease-in-out 2.5s infinite alternate;
+}
+
+@keyframes botanical-breeze-one {
+  from { transform: rotate(-3deg) translate3d(0, 0, 0); }
+  to { transform: rotate(-2.3deg) translate3d(2px, -2px, 0); }
+}
+
+@keyframes botanical-breeze-five {
+  from { transform: rotate(-2deg) translate3d(0, 0, 0); }
+  to { transform: rotate(-1.4deg) translate3d(3px, 1px, 0); }
+}
 
 .prelude {
   display: flex;
@@ -486,6 +741,47 @@ figcaption {
 
 .closing__last span { display: block; }
 
+.signature {
+  align-self: flex-end;
+  margin-top: clamp(90px, 9vw, 120px);
+  margin-right: clamp(10px, 4.5vw, 72px);
+  text-align: left;
+}
+
+.signature__closing {
+  color: #7D7871;
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 1.25vw, 1.3125rem);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.signature__name {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  color: var(--color-text);
+  font-family: var(--font-signature);
+  font-size: clamp(2.625rem, 3.6vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: .02em;
+}
+
+.signature__heart {
+  width: clamp(29px, 2.4vw, 35px);
+  transform: translateY(-8px) rotate(-10deg);
+}
+
+.signature__heart path {
+  fill: none;
+  stroke: #D99CA5;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .js .reveal.reveal-ready {
   opacity: 0;
   transform: translateY(16px);
@@ -520,6 +816,40 @@ figcaption {
 .js .closing.is-visible .closing__line--two { transition-delay: 240ms; }
 .js .closing.is-visible .closing__last { transition-delay: 620ms; }
 
+.js .closing.reveal-ready .signature,
+.js .closing.reveal-ready .signature__name {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1000ms var(--ease-out), transform 1000ms var(--ease-out);
+}
+
+.js .closing.is-visible .signature {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 900ms;
+}
+
+.js .closing.is-visible .signature__name {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1020ms;
+}
+
+.js .closing.reveal-ready .signature__heart path {
+  stroke-dasharray: 72;
+  stroke-dashoffset: 72;
+  opacity: 0;
+}
+
+.js .closing.is-visible .signature__heart path {
+  opacity: 1;
+  animation: signature-heart-draw 900ms var(--ease-out) 1450ms forwards;
+}
+
+@keyframes signature-heart-draw {
+  to { stroke-dashoffset: 0; }
+}
+
 @media (max-width: 900px) {
   :root { --page-padding: clamp(24px, 6vw, 54px); }
 
@@ -534,6 +864,36 @@ figcaption {
   .prose { font-size: clamp(1.2rem, 2.3vw, 1.4rem); }
   .domestic-copy { grid-column: 3 / 11; }
   .paired-reading { gap: 40px; }
+
+  .botanical--one { left: calc(var(--page-padding) * -0.62); }
+  .botanical--two {
+    right: calc(var(--page-padding) * -0.55);
+    width: clamp(160px, 24vw, 215px);
+  }
+  .botanical--three {
+    right: -2px;
+    width: clamp(100px, 14vw, 118px);
+  }
+  .botanical--four { right: -8px; width: 112px; }
+  .botanical--five { right: -2%; width: clamp(220px, 34vw, 300px); }
+  .botanical--six { width: clamp(420px, 66vw, 540px); }
+  .botanical--seven { left: calc(var(--page-padding) * -0.2); }
+  .botanical--eight {
+    right: calc(var(--page-padding) * -0.3);
+    width: clamp(160px, 25vw, 205px);
+  }
+  .botanical--nine {
+    right: -8px;
+    width: clamp(100px, 15vw, 120px);
+  }
+  .botanical--ten {
+    left: calc(var(--page-padding) * -0.1);
+    width: clamp(175px, 28vw, 220px);
+  }
+  .botanical--eleven {
+    right: calc(var(--page-padding) * -0.25);
+    width: 160px;
+  }
 }
 
 @media (max-width: 680px) {
@@ -560,8 +920,8 @@ figcaption {
   .domestic-photo--small,
   .domestic-photo--tall,
   .domestic-copy,
-  .paired-reading .prose:first-child,
-  .paired-reading .prose:last-child {
+  .paired-reading > .prose:nth-last-child(2),
+  .paired-reading > .prose:last-child {
     grid-column: 1;
     grid-row: auto;
   }
@@ -590,6 +950,7 @@ figcaption {
   .domestic-spread { padding-block: 94px; }
   .domestic-gallery { gap: 12px; }
   .domestic-photo img { height: min(62vw, 280px); }
+  .domestic-photo--small img { height: min(48vw, 220px); }
   .domestic-copy { margin-top: 40px; }
 
   .wide-photo { width: 100%; margin-inline: auto; }
@@ -598,12 +959,77 @@ figcaption {
   .nature-moment .text-column { grid-row: 2; }
 
   .paired-reading { gap: 75px; }
-  .paired-reading .prose:last-child { margin-top: 0; }
+  .paired-reading > .prose:last-child { margin-top: 0; }
   .continuation-reading { padding-top: 100px; }
   .ruled--right::before { right: -12px; left: auto; }
   .final-photo { width: min(78%, 340px); margin-bottom: 104px; }
   .closing { padding-top: 150px; }
   .closing__line { font-size: clamp(3rem, 12vw, 4rem); }
+  .signature { margin-top: clamp(64px, 14vw, 92px); }
+  .signature {
+    margin-right: clamp(4px, 4vw, 20px);
+  }
+  .signature__name {
+    font-size: clamp(2.1rem, 10.5vw, 2.85rem);
+    gap: 8px;
+  }
+  .signature__heart {
+    width: clamp(26px, 8.3vw, 32px);
+    transform: translateY(-6px) rotate(-10deg);
+  }
+
+  .botanical--one {
+    top: 1%;
+    left: -26px;
+    width: 104px;
+  }
+  .botanical--two {
+    right: -24px;
+    bottom: -8%;
+    width: 150px;
+  }
+  .botanical--two .botanical__image { transform: none; }
+  .botanical--three {
+    top: 50%;
+    right: -4px;
+    width: 68px;
+  }
+  .botanical--three .botanical__image { transform: none; }
+  .botanical--four {
+    right: -18px;
+    bottom: 1%;
+    width: 86px;
+  }
+  .botanical--five {
+    right: -18px;
+    bottom: 8px;
+    width: 190px;
+  }
+  .botanical--six { width: min(100vw, 400px); }
+  .botanical--six-left {
+    top: 50%;
+    left: 50%;
+  }
+  .botanical--six-left .botanical__image { clip-path: none; }
+  .botanical--six-right { display: none; }
+  .botanical--seven {
+    top: 39%;
+    left: -20px;
+    width: 38px;
+  }
+  .botanical--eight {
+    right: -18px;
+    bottom: -10%;
+    width: 132px;
+  }
+  .botanical--ten,
+  .botanical--eleven { display: none; }
+  .botanical--nine {
+    top: 52%;
+    right: -4px;
+    width: 70px;
+    transform: translateY(-12%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -615,8 +1041,21 @@ figcaption {
   }
   .js .reveal.reveal-ready,
   .js .closing.reveal-ready .closing__line,
-  .js .closing.reveal-ready .closing__last {
-    opacity: 1;
-    transform: none;
+  .js .closing.reveal-ready .closing__last,
+  .js .closing.reveal-ready .signature,
+  .js .closing.reveal-ready .signature__name,
+  .js .botanical.botanical-ready .botanical__image {
+    opacity: 1 !important;
+    transform: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .botanical.is-visible .botanical__image { animation: none !important; }
+  .js .closing.reveal-ready .signature__heart path,
+  .js .closing.is-visible .signature__heart path {
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
   }
 }
